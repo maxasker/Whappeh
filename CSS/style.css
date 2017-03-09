@@ -21,6 +21,25 @@
         margin-top: 2%;
         margin-bottom: 2%;
 }
+    #links-div{
+        background-color: red;
+        width: 97%;
+        height: 400px;
+        margin-left: 1%;
+        margin-right: 2%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+}
+
+    #own-search-div{
+        background-color: green;
+        width: 97%; 
+        height: 400px;
+        margin-left: 2%;
+        margin-right: 1%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+}
     .title{
         margin-left: 10%;
         margin-right: 10%;
