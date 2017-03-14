@@ -1,3 +1,11 @@
+    html, body{
+        margin: 0;
+        height: 100%;
+}
+
+    .wrapper{
+        height: 95%;
+}
 .filmtext{
     font-size:  20px;
     text-align: center;
@@ -23,12 +31,11 @@
 }
     #links-div{
         background-color: red;
-        width: 97%;
-        height: 400px;
-        margin-left: 1%;
-        margin-right: 2%;
+        width: 30%;
+        margin-left: 2.5%;
         margin-top: 2%;
         margin-bottom: 2%;
+        overflow: hidden;
 }
 
     #own-search-div{
@@ -85,6 +92,7 @@
     
     /* Set black background color, white text and some padding */
     footer {
+        clear: both;
         background-color: #555;
         color: white;
         padding: 15px;
@@ -98,7 +106,3 @@
 }
     .row.content {height:auto;} 
 }
-  
- 
-
-
