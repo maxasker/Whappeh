@@ -47,13 +47,27 @@
         margin-top: 2%;
         margin-bottom: 2%;
 }
+    .single-article{
+        height: 400px;
+        width: 100%;
+}
 
+    .show-button{
+        width: 100%;
+        margin-bottom: 1%;
+}
+    img{
+        max-height: 200px;
+        padding: 4px;
+}
     .title{
         margin-left: 10%;
         margin-right: 10%;
         margin-top: 2em;
 
 }
+
+
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
         margin-bottom: 0;
