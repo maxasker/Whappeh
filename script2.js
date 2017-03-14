@@ -17,8 +17,10 @@ function guardian(searchterm){
 
 }
 
-function updateguardian();{
-    
+function updateguardian(data);{
+    for (var i = 0; i < data["response"]["results"].length; i++){
+        $('#title').text(data["response"]["results"][i]["webTitle"]);
+    }
     
     
 }
