@@ -29,7 +29,7 @@
         margin-top: 2%;
         margin-bottom: 2%;
 }
-    #links-div{
+    .links-div{
         background-color: red;
         width: 30%;
         margin-left: 2.5%;
@@ -64,24 +64,8 @@
     .row.content {
         height: 450px
 }
-    .movieposter{
-        
-        width: 64%;
-        margin-left: 18%;
-        margin-right: 18%;
-    
-}
-    .arkiv, .favoritfilm{
-    width: 49%;
-    border-radius: 20px;
-    margin-left: 1%;
-    margin-bottom:10%;
-    margin-top: 5%;
-    box-shadow: 10px 10px 5px #888888;
-    background-color: black;
-    color: beige;
-    
-}
+
+
 
     /* Set gray background color and 100% height */
     .sidenav {
