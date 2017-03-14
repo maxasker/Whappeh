@@ -20,30 +20,32 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Whappeh</a>
+      <a class="navbar-brand" href="index.html">Whappeh</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="search.html">Search</a></li>
       </ul>
     
     </div>
   </div>
 </nav>
-  
+    
 <div class="container-fluid text-center">    
-  <div class="row content">
-    <h3>Search</h3>
-      <div class="row">
-            <div id="search-box">
-                <textarea id="text-search" name="text-search" placeholder="Sök efter artikel" maxlength="50" rows="1" cols="40"></textarea>
-                <button><a href="url">Sök</a></button>
-            </div>
+  <div class="row">
+    <h1>Search</h1>
+      <div id="searchbox" class="col-sm-6 col-sm-offset-3">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+          <button class="btn btn-default" type="button"><a href="url">Sök</a></button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 
-        </div>
     <div id="test" class="col-sm-6 text-middle"> 
-      <h3>Egen sökning</h3>
+      <h2>Egen sökning</h2>
       <div class="row">
            
             <div id="own-search-div">
@@ -55,7 +57,7 @@
     </div>
 
       <div class="col-sm-6 text-middle"> 
-      <h3>Länkar</h3>
+      <h2>Länkar</h2>
       <div class="row">
             <div id="links-div">
                
@@ -70,6 +72,7 @@
     <footer class="container-fluid text-center">
       <p>Footer Text</p>
     </footer>
+    
 <!-- Länkar in jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <!-- Länkar in vår egna JavaScript-fil -->
