@@ -52,6 +52,9 @@
         width: 100%;
 }
 
+    .hidden{
+        display: none;
+}
     .show-button{
         width: 100%;
         margin-bottom: 1%;
