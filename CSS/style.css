@@ -12,46 +12,89 @@
 }
  
     #chart-div-right{
-        background-color: red;
+        background-color: white;
         width: 97%;
         height: 400px;
         margin-left: 1%;
         margin-right: 2%;
         margin-top: 2%;
         margin-bottom: 2%;
+        border-radius: 5px;
+        border-style: inset;
+        -webkit-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+        -moz-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+        box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
 }
     #chart-div-left{
-        background-color: green;
+        background-color: white;
         width: 97%; 
         height: 400px;
         margin-left: 2%;
         margin-right: 1%;
         margin-top: 2%;
         margin-bottom: 2%;
+        border-radius: 5px;
+        border-style: inset;
+        -webkit-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+        -moz-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+        box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
 }
     .links-div{
-        background-color: red;
         width: 30%;
         margin-left: 2.5%;
         margin-top: 2%;
         margin-bottom: 2%;
         overflow: hidden;
-        padding-left: 0px;
-        padding-right: 0px;
+
+}
+
+    .single-article > article > button {
+        margin-bottom: 3%;
+        margin-top: 2%;
+        background-color: #333;
+        padding-left: 3%;
+        padding-right: 3%;
+        border-radius: 5px;
+}
+
+    .single-article > article > button:hover {
+        background-color: white;
+}
+
+    .single-article > article > button > a {
+        color: #9d9d9d;
+        
+}
+
+
+    .single-article > article > img{
+        width: 90%;
+        max-height: auto;
+        padding: 4px;
 }
 
     #own-search-div{
-        background-color: green;
+        background-color: white;
         width: 97%; 
         height: 400px;
         margin-left: 2%;
         margin-right: 1%;
         margin-top: 2%;
         margin-bottom: 2%;
+        border-radius: 5px;
+        border-style: inset;
+        -webkit-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+        -moz-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+        box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
 }
     .single-article{
-        height: 400px;
+        height: auto;
         width: 100%;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        -webkit-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+        -moz-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+        box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
 }
 
     .hidden{
@@ -59,12 +102,24 @@
 }
     .show-button{
         width: 100%;
-        margin-bottom: 1%;
+        margin-bottom: 3%;
+        margin-top: 5%;
+        border-radius: 6px;
+        border-color: #f0f0f0;
+        background-color: #f0f0f0;
+        -webkit-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.30);
+        -moz-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.30);
+        box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.30);
 }
-    img{
-        max-height: 200px;
-        padding: 4px;
+
+    .show-button > a {
+        color: #9d9d9d;
 }
+
+    .show-button:hover{
+        background-color: white;
+}
+
     .title{
         margin-left: 10%;
         margin-right: 10%;
@@ -93,11 +148,10 @@
         height: 100%;
 }
     
-    /* Set black background color, white text and some padding */
     footer {
         clear: both;
-        background-color: #555;
-        color: white;
+        background-color: #333;
+        color: #9d9d9d;
         padding: 15px;
 }
     
