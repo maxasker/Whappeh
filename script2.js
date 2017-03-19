@@ -100,7 +100,7 @@ function updatebing(data){
             $('<img src="nyt.jpg">').appendTo($('#bing-article-' + i));
         }
         $('<button id="bingbutt-'+ i + '">').appendTo($('#bing-article-' + i));
-        $('<a>').text("Klicka här").appendTo($('#bingbutt-' + i));
+        $('<a href="'+ data["value"][i]["url"] +'">').text("Klicka här").appendTo($('#bingbutt-' + i));
         $('<button value="bing" class="show-button" id="bing-show-more">').appendTo($('.bing'));
         $('<a>').text("Show more").appendTo($('#bing-show-more'));
         $("#bing-show-more").click(showmore);
@@ -115,7 +115,7 @@ function updatebing(data){
             $('<img src="nyt.jpg">').appendTo($('#bing-article-' + i));
         }
         $('<button id="bingbutt-'+ i + '">').appendTo($('#bing-article-' + i));
-        $('<a>').text("Klicka här").appendTo($('#bingbutt-' + i));
+        $('<a href="'+ data["value"][i]["url"] +'">').text("Klicka här").appendTo($('#bingbutt-' + i));
        } 
     }
 }
