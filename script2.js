@@ -1,11 +1,26 @@
+var myvalues = new Array();
 $("#search").on("click", function(){
+    myvalues = [];
     var searchterm = $("#searchterm").val();
     $( ".single-article" ).remove();
     $( ".show-button" ).remove();
+    sverigesradio(searchterm);
 	guardian(searchterm);
     nytimes(searchterm);
     bing(searchterm);
+    makegraph(myvalues);
 });
+
+function sverigesradio(searchterm){
+$.ajax({
+    url: "http://api.sr.se/api/v2/episodes/search/?query="+searchterm+"&format=json",
+    dataType: "JSON"
+}).done(function(data){
+    gethitsSR(data);
+}).fail(function(data){
+    console.log("something went wrong");
+});
+}
 
 function nytimes(searchterm){
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
@@ -21,6 +36,7 @@ $.ajax({
 }).done(function(data){
     console.log(data);
     updatenytimes(data);
+    gethitsNYTIMES(data);
 }).fail(function(data){
     console.log("something went wrong");
 });
@@ -127,6 +143,7 @@ function guardian(searchterm){
 }).done(function(data){
     console.log(data);
     updateguardian(data);
+    gethitsGUARDIAN(data);
 }).fail(function(data){
     console.log("something went wrong");
 });
@@ -192,4 +209,64 @@ function showless(){
     $('<button value="' + newsclass + '" class="show-button" id="' + newsclass +'-show-more">').appendTo($('.' + newsclass));
     $('<a>').text("Show more").appendTo($('#'+newsclass+'-show-more'));
     $('#' + newsclass +'-show-more').click(showmore);
+}
+
+function gethitsSR(data){
+    $.each(data.pagination, function (key, val) {
+        if(key == "totalhits"){
+            myvalues.push(val);
+        }
+    });
+}
+
+function gethitsNYTIMES(data){
+    $.each(data.response, function (i) {
+    $.each(data.response[i], function (key, val) {
+        if(key == "hits"){
+            myvalues.push(val)
+        }
+        });
+    });
+}
+
+function gethitsGUARDIAN(data){
+    $.each(data.response, function (key, val) {
+        if(key == "total"){
+            myvalues.push(val);
+        }
+    });
+}
+
+function makegraph(myvalues){
+var ctx = $("#myChart");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["SR", "Guardian", "NY Times"],
+        datasets: [{
+            label: 'Total hits!',
+            data: myvalues,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
 }
