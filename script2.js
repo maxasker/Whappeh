@@ -4,6 +4,7 @@ $("#search").on("click", function(){
     $( ".show-button" ).remove();
 	guardian(searchterm);
     nytimes(searchterm);
+    bing(searchterm);
 });
 
 function nytimes(searchterm){
@@ -59,6 +60,65 @@ function updatenytimes(data){
     }
 }
 
+function bing(searchterm){
+     var params = {
+            "q": searchterm,
+            "count": "10",
+            "offset": "0",
+            "mkt": "en-us",
+            "safeSearch": "Moderate",
+        };
+      
+        $.ajax({
+            url: "https://api.cognitive.microsoft.com/bing/v5.0/news/search?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","637e5119ca8c43fba48add1cb05b413c");
+            },
+            type: "GET",
+            data: "{body}",
+        })
+        .done(function(data) {
+            console.log(data);
+            updatebing(data);
+        })
+        .fail(function() {
+            alert("error");
+        });
+}
+
+function updatebing(data){
+        for (var i = 0; i < data["value"].length; i++){
+       if (i==0){
+        $('<div class="single-article" id="bing-' + i + '">').appendTo($('.bing'));
+        $('<article id="bing-article-' + i + '">').appendTo($('#bing-' + i));
+        $('<h2>').text(data["value"][i]["name"]).appendTo($('#bing-article-' + i));
+        $('<p>').text(data["value"][i]["description"]).appendTo($('#bing-article-' + i)); 
+        if(data["value"][i]["image"]["thumbnail"].length != 0){
+            $('<img src="' + data["value"][i]["image"]["thumbnail"]["contentUrl"] +  '">').appendTo($('#bing-article-' + i));
+        } else {
+            $('<img src="nyt.jpg">').appendTo($('#bing-article-' + i));
+        }
+        $('<button id="bingbutt-'+ i + '">').appendTo($('#bing-article-' + i));
+        $('<a>').text("Klicka här").appendTo($('#bingbutt-' + i));
+        $('<button value="bing" class="show-button" id="bing-show-more">').appendTo($('.bing'));
+        $('<a>').text("Show more").appendTo($('#bing-show-more'));
+        $("#bing-show-more").click(showmore);
+        } else if (i>0){
+        $('<div class="single-article hidden" id="bing-' + i + '">').appendTo($('.bing'));
+        $('<article id="bing-article-' + i + '">').appendTo($('#bing-' + i));
+        $('<h2>').text(data["value"][i]["name"]).appendTo($('#bing-article-' + i));
+        $('<p>').text(data["value"][i]["description"]).appendTo($('#bing-article-' + i)); 
+        if(data["value"][i]["image"]["thumbnail"].length != 0){
+            $('<img src="' + data["value"][i]["image"]["thumbnail"]["contentUrl"] +  '">').appendTo($('#bing-article-' + i));
+        } else {
+            $('<img src="nyt.jpg">').appendTo($('#bing-article-' + i));
+        }
+        $('<button id="bingbutt-'+ i + '">').appendTo($('#bing-article-' + i));
+        $('<a>').text("Klicka här").appendTo($('#bingbutt-' + i));
+       } 
+    }
+}
 
 function guardian(searchterm){
     $.ajax({
