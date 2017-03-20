@@ -1,5 +1,11 @@
 var myvalues = new Array();
 $("#search").on("click", function(){
+    if( $("#searchterm").val().length === 0 ) {
+      for(i=0;i<2;i++) {
+    $("#searchterm").fadeTo('slow', 0.5).fadeTo('slow', 1.0);
+    $("#searchterm").attr("placeholder", "You need to search for something!");
+    }} else {
+    $("#searchterm").attr("placeholder", "Search for...");
     myvalues = [];
     var searchterm = $("#searchterm").val();
     $( ".single-article" ).remove();
@@ -7,8 +13,8 @@ $("#search").on("click", function(){
     sverigesradio(searchterm);
 	guardian(searchterm);
     nytimes(searchterm);
-    bing(searchterm);
     makegraph(myvalues);
+    }
 });
 
 function sverigesradio(searchterm){
@@ -16,7 +22,9 @@ $.ajax({
     url: "http://api.sr.se/api/v2/episodes/search/?query="+searchterm+"&format=json",
     dataType: "JSON"
 }).done(function(data){
+    console.log(data);
     gethitsSR(data);
+    updatesr(data);
 }).fail(function(data){
     console.log("something went wrong");
 });
@@ -76,62 +84,28 @@ function updatenytimes(data){
     }
 }
 
-function bing(searchterm){
-     var params = {
-            "q": searchterm,
-            "count": "10",
-            "offset": "0",
-            "mkt": "en-us",
-            "safeSearch": "Moderate",
-        };
-      
-        $.ajax({
-            url: "https://api.cognitive.microsoft.com/bing/v5.0/news/search?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","637e5119ca8c43fba48add1cb05b413c");
-            },
-            type: "GET",
-            data: "{body}",
-        })
-        .done(function(data) {
-            console.log(data);
-            updatebing(data);
-        })
-        .fail(function() {
-            alert("error");
-        });
-}
 
-function updatebing(data){
-        for (var i = 0; i < data["value"].length; i++){
+function updatesr(data){
+        for (var i = 0; i < data["episodes"].length; i++){
        if (i==0){
-        $('<div class="single-article" id="bing-' + i + '">').appendTo($('.bing'));
-        $('<article id="bing-article-' + i + '">').appendTo($('#bing-' + i));
-        $('<h2>').text(data["value"][i]["name"]).appendTo($('#bing-article-' + i));
-        $('<p>').text(data["value"][i]["description"]).appendTo($('#bing-article-' + i)); 
-        if(data["value"][i]["image"]["thumbnail"].length != 0){
-            $('<img src="' + data["value"][i]["image"]["thumbnail"]["contentUrl"] +  '">').appendTo($('#bing-article-' + i));
-        } else {
-            $('<img src="nyt.jpg">').appendTo($('#bing-article-' + i));
-        }
-        $('<button id="bingbutt-'+ i + '">').appendTo($('#bing-article-' + i));
-        $('<a href="'+ data["value"][i]["url"] +'">').text("Klicka här").appendTo($('#bingbutt-' + i));
-        $('<button value="bing" class="show-button" id="bing-show-more">').appendTo($('.bing'));
-        $('<a>').text("Show more").appendTo($('#bing-show-more'));
-        $("#bing-show-more").click(showmore);
+        $('<div class="single-article" id="sr-' + i + '">').appendTo($('.sr'));
+        $('<article id="sr-article-' + i + '">').appendTo($('#sr-' + i));
+        $('<h2>').text(data["episodes"][i]["title"]).appendTo($('#sr-article-' + i));
+        $('<p>').text(data["episodes"][i]["description"]).appendTo($('#sr-article-' + i));
+        $('<img src="'+data["episodes"][i]["imageurl"]+'">').appendTo($('#sr-article-' + i));
+        $('<button id="srbutt-'+ i + '">').appendTo($('#sr-article-' + i));
+        $('<a href="'+ data["episodes"][i]["url"] +'">').text("Klicka här").appendTo($('#srbutt-' + i));
+        $('<button value="sr" class="show-button" id="sr-show-more">').appendTo($('.sr'));
+        $('<a>').text("Show more").appendTo($('#sr-show-more'));
+        $("#sr-show-more").click(showmore);
         } else if (i>0){
-        $('<div class="single-article hidden" id="bing-' + i + '">').appendTo($('.bing'));
-        $('<article id="bing-article-' + i + '">').appendTo($('#bing-' + i));
-        $('<h2>').text(data["value"][i]["name"]).appendTo($('#bing-article-' + i));
-        $('<p>').text(data["value"][i]["description"]).appendTo($('#bing-article-' + i)); 
-        if(data["value"][i]["image"]["thumbnail"].length != 0){
-            $('<img src="' + data["value"][i]["image"]["thumbnail"]["contentUrl"] +  '">').appendTo($('#bing-article-' + i));
-        } else {
-            $('<img src="nyt.jpg">').appendTo($('#bing-article-' + i));
-        }
-        $('<button id="bingbutt-'+ i + '">').appendTo($('#bing-article-' + i));
-        $('<a href="'+ data["value"][i]["url"] +'">').text("Klicka här").appendTo($('#bingbutt-' + i));
+        $('<div class="single-article hidden" id="sr-' + i + '">').appendTo($('.sr'));
+        $('<article id="sr-article-' + i + '">').appendTo($('#sr-' + i));
+        $('<h2>').text(data["episodes"][i]["title"]).appendTo($('#sr-article-' + i));
+        $('<p>').text(data["episodes"][i]["description"]).appendTo($('#sr-article-' + i));
+        $('<img src="'+data["episodes"][i]["imageurl"]+'">').appendTo($('#sr-article-' + i));
+        $('<button id="srbutt-'+ i + '">').appendTo($('#sr-article-' + i));
+        $('<a href="'+ data["episodes"][i]["url"] +'">').text("Klicka här").appendTo($('#srbutt-' + i));
        } 
     }
 }
