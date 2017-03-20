@@ -1,5 +1,17 @@
 var myvalues = new Array();
 $("#search").on("click", function(){
+    start();
+});
+
+ $('#searchterm').keypress(function(event) {
+        if (event.keyCode == 13) {
+            start();
+            return false;
+        }
+});
+ 
+
+function start(){
     if( $("#searchterm").val().length === 0 ) {
       $(".article-h").addClass("hidden");
       $( ".single-article" ).remove();
@@ -19,13 +31,7 @@ $("#search").on("click", function(){
     nytimes(searchterm);
     makegraph(myvalues);
     }
-});
-
-$("#search").keypress(function(event) {
-    if (event.which == 13) {
-        alert("HEJ");
-    }
-});
+}
 
 function sverigesradio(searchterm){
 $.ajax({
