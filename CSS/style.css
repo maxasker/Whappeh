@@ -10,6 +10,11 @@
     font-size:  20px;
     text-align: center;
 }
+
+
+#totalhits{
+    margin-top: 8px;
+}
  
     #chart-div-right{
         background-color: white;
