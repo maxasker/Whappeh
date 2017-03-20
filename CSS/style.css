@@ -1,16 +1,21 @@
-    html, body{
+html, body{
         margin: 0;
         height: 100%;
 }
 
-    .wrapper{
+.wrapper{
         height: 95%;
 }
-.filmtext{
-    font-size:  20px;
-    text-align: center;
+#searchlink{
+    
+    width: 80%;
+    margin-top: 0.6em;
+    
 }
 
+#logotype{
+    height: 5em;
+}
 .spinner {
   width: 100%;
   height: 40px;
@@ -175,12 +180,7 @@
         background-color: white;
 }
 
-    .title{
-        margin-left: 10%;
-        margin-right: 10%;
-        margin-top: 2em;
-
-}
+ 
 
 
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -196,12 +196,7 @@
 
 
 
-    /* Set gray background color and 100% height */
-    .sidenav {
-        padding-top: 20px;
-        background-color: #f1f1f1;
-        height: 100%;
-}
+ 
     
     footer {
         clear: both;
@@ -216,9 +211,15 @@
         height: auto;
         padding: 15px;
 }
-    .row.content {height:auto;} 
+    .row.content {
+        height:auto;
+} 
+    .links-div{
+        width: 100%;
+        margin-left: 2.5%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        overflow: hidden;
+
 }
-.img-responsive{
-    
-    width:10%;
 }
