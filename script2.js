@@ -1,10 +1,12 @@
 var myvalues = new Array();
 $("#search").on("click", function(){
     if( $("#searchterm").val().length === 0 ) {
+      $(".article-h").addClass("hidden");
       for(i=0;i<2;i++) {
     $("#searchterm").fadeTo('slow', 0.5).fadeTo('slow', 1.0);
     $("#searchterm").attr("placeholder", "You need to search for something!");
     }} else {
+    $(".article-h").removeClass("hidden");
     $("#searchterm").attr("placeholder", "Search for...");
     myvalues = [];
     var searchterm = $("#searchterm").val();
