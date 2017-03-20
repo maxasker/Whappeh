@@ -2,6 +2,8 @@ var myvalues = new Array();
 $("#search").on("click", function(){
     if( $("#searchterm").val().length === 0 ) {
       $(".article-h").addClass("hidden");
+      $( ".single-article" ).remove();
+      $( ".show-button" ).remove();
       for(i=0;i<2;i++) {
     $("#searchterm").fadeTo('slow', 0.5).fadeTo('slow', 1.0);
     $("#searchterm").attr("placeholder", "You need to search for something!");
@@ -16,6 +18,12 @@ $("#search").on("click", function(){
 	guardian(searchterm);
     nytimes(searchterm);
     makegraph(myvalues);
+    }
+});
+
+$("#search").keypress(function(event) {
+    if (event.which == 13) {
+        alert("HEJ");
     }
 });
 
@@ -54,6 +62,10 @@ $.ajax({
 }
 
 function updatenytimes(data){
+    if (data["response"]["docs"].length == 0){
+        $('<div class="single-article" id="nothinghere">').appendTo($('.nyt'));
+        $('<p>').text("Sorry nothing here :(").appendTo($('#nothinghere'));
+    }
     for (var i = 0; i < data["response"]["docs"].length; i++){
        if (i==0){
         $('<div class="single-article" id="nytimes-' + i + '">').appendTo($('.nyt'));
