@@ -16,6 +16,7 @@ function start(){
       $(".article-h").addClass("hidden");
       $( ".single-article" ).remove();
       $( ".show-button" ).remove();
+      $( ".totalhitsp" ).remove();
       for(i=0;i<2;i++) {
     $("#searchterm").fadeTo('slow', 0.5).fadeTo('slow', 1.0);
     $("#searchterm").attr("placeholder", "You need to search for something!");
@@ -26,6 +27,7 @@ function start(){
     var searchterm = $("#searchterm").val();
     $( ".single-article" ).remove();
     $( ".show-button" ).remove();
+    $( ".totalhitsp" ).remove();
     sverigesradio(searchterm);
 	guardian(searchterm);
     nytimes(searchterm);
@@ -52,26 +54,30 @@ function nytimes(searchterm){
     'api-key': "8731a51f622143dd834372cdff348d28",
     'q': searchterm
 });
-
+$('<div class="spinner">HEJ<div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>').appendTo($('#nytimestothits'));
 
 $.ajax({
     url: url,
     dataType: "JSON"
 }).done(function(data){
     console.log(data);
+    $( ".spinner" ).remove();
     updatenytimes(data);
     gethitsNYTIMES(data);
 }).fail(function(data){
+    $( ".spinner" ).remove();
     console.log("something went wrong");
 });
     
 }
 
+
 function updatenytimes(data){
+    $('<p class="totalhitsp">').text("NY-times total hits: " +data["response"]["meta"]["hits"]).appendTo($('#nytimestothits'));
     if (data["response"]["docs"].length == 0){
-        $('<div class="single-article" id="nothinghere">').appendTo($('.nyt'));
-        $('<p>').text("Sorry nothing here :(").appendTo($('#nothinghere'));
-    }
+        $('<div class="single-article nothinghere" id="nothingherenyt">').appendTo($('.nyt'));
+        $('<p>').text("Sorry nothing here :(").appendTo($('#nothingherenyt'));
+    }else{
     for (var i = 0; i < data["response"]["docs"].length; i++){
        if (i==0){
         $('<div class="single-article" id="nytimes-' + i + '">').appendTo($('.nyt'));
@@ -100,10 +106,16 @@ function updatenytimes(data){
         $('<a href="'+ data["response"]["docs"][i]["web_url"] + '">').text("Läs hela artikeln").appendTo($('#nytimes-' + i));
        } 
     }
+    }
 }
 
 
 function updatesr(data){
+        $('<p class="totalhitsp">').text("SR total hits: " +data["pagination"]["totalhits"]).appendTo($('#srtothits'));
+        if (data["episodes"].length == 0){
+        $('<div class="single-article" id="nothingheresr">').appendTo($('.sr'));
+        $('<p>').text("Sorry nothing here :(").appendTo($('#nothingheresr'));
+    }else{
         for (var i = 0; i < data["episodes"].length; i++){
        if (i==0){
         $('<div class="single-article" id="sr-' + i + '">').appendTo($('.sr'));
@@ -123,6 +135,7 @@ function updatesr(data){
         $('<img src="'+data["episodes"][i]["imageurl"]+'">').appendTo($('#sr-article-' + i));
         $('<a href="'+ data["episodes"][i]["url"] +'">').text("Läs hela artikeln").appendTo($('#sr-' + i));
        } 
+        }
     }
 }
 
@@ -141,6 +154,11 @@ function guardian(searchterm){
 }
 
 function updateguardian(data){
+    $('<p class="totalhitsp">').text("The Guardian total hits: " +data["response"]["total"]).appendTo($('#guardiantothits'));
+    if (data["response"]["results"].length == 0){
+        $('<div class="single-article" id="nothinghereguard">').appendTo($('.guardian'));
+        $('<p>').text("Sorry nothing here :(").appendTo($('#nothinghereguard'));
+    }else{
     for (var i = 0; i < data["response"]["results"].length; i++){
         if (i==0){
         $('<div class="single-article" id="guardian-' + i + '">').appendTo($('.guardian'));
@@ -168,6 +186,7 @@ function updateguardian(data){
 }
         $('<a href="'+data["response"]["results"][i]["webUrl"]+'">').text("Läs hela artikeln").appendTo($('#guardian-' + i));   
         }
+    }
     }
 }
 
