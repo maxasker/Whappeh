@@ -63,8 +63,7 @@ function updatenytimes(data){
         } else {
             $('<img src="nyt.jpg">').appendTo($('#nytimes-article-' + i));
         }
-        $('<button id="nytimesbutt-'+ i + '">').appendTo($('#nytimes-article-' + i));
-        $('<a>').text("Klicka här").appendTo($('#nytimesbutt-' + i));
+        $('<a href="'+ data["response"]["docs"][i]["web_url"] + '">').text("Läs hela artikeln").appendTo($('#nytimes-' + i));
         $('<button value="nyt" class="show-button" id="nytimes-show-more">').appendTo($('.nyt'));
         $('<a>').text("Show more").appendTo($('#nytimes-show-more'));
         $("#nytimes-show-more").click(showmore);
@@ -78,8 +77,7 @@ function updatenytimes(data){
         } else {
             $('<img src="nyt.jpg">').appendTo($('#nytimes-article-' + i));
         }
-        $('<button id="nytimesbutt-'+ i + '">').appendTo($('#nytimes-article-' + i));
-        $('<a>').text("Klicka här").appendTo($('#nytimesbutt-' + i));
+        $('<a href="'+ data["response"]["docs"][i]["web_url"] + '">').text("Läs hela artikeln").appendTo($('#nytimes-' + i));
        } 
     }
 }
@@ -93,8 +91,7 @@ function updatesr(data){
         $('<h2>').text(data["episodes"][i]["title"]).appendTo($('#sr-article-' + i));
         $('<p>').text(data["episodes"][i]["description"]).appendTo($('#sr-article-' + i));
         $('<img src="'+data["episodes"][i]["imageurl"]+'">').appendTo($('#sr-article-' + i));
-        $('<button id="srbutt-'+ i + '">').appendTo($('#sr-article-' + i));
-        $('<a href="'+ data["episodes"][i]["url"] +'">').text("Klicka här").appendTo($('#srbutt-' + i));
+        $('<a href="'+ data["episodes"][i]["url"] +'">').text("Läs hela artikeln").appendTo($('#sr-' + i));
         $('<button value="sr" class="show-button" id="sr-show-more">').appendTo($('.sr'));
         $('<a>').text("Show more").appendTo($('#sr-show-more'));
         $("#sr-show-more").click(showmore);
@@ -104,8 +101,7 @@ function updatesr(data){
         $('<h2>').text(data["episodes"][i]["title"]).appendTo($('#sr-article-' + i));
         $('<p>').text(data["episodes"][i]["description"]).appendTo($('#sr-article-' + i));
         $('<img src="'+data["episodes"][i]["imageurl"]+'">').appendTo($('#sr-article-' + i));
-        $('<button id="srbutt-'+ i + '">').appendTo($('#sr-article-' + i));
-        $('<a href="'+ data["episodes"][i]["url"] +'">').text("Klicka här").appendTo($('#srbutt-' + i));
+        $('<a href="'+ data["episodes"][i]["url"] +'">').text("Läs hela artikeln").appendTo($('#sr-' + i));
        } 
     }
 }
@@ -136,8 +132,7 @@ function updateguardian(data){
 }else{
      $('<img src="guardian.jpg">').appendTo($('#guardian-article-' + i));
 }
-        $('<button id="guardianbutt-'+ i + '">').appendTo($('#guardian-article-' + i));
-        $('<a>').text("Klicka här").appendTo($('#guardianbutt-' + i));
+        $('<a href="'+data["response"]["results"][i]["webUrl"]+'">').text("Läs hela artikeln").appendTo($('#guardian-' + i));
         $('<button value="guardian" class="show-button" id="guardian-show-more">').appendTo($('.guardian'));
         $('<a>').text("Show more").appendTo($('#guardian-show-more'));
         $("#guardian-show-more").click(showmore);
@@ -151,8 +146,7 @@ function updateguardian(data){
 }else{
      $('<img src="guardian.jpg">').appendTo($('#guardian-article-' + i));
 }
-        $('<button id="guardianbutt-'+ i + '">').appendTo($('#guardian-article-' + i));
-        $('<a>').text("Klicka här").appendTo($('#guardianbutt-' + i));   
+        $('<a href="'+data["response"]["results"][i]["webUrl"]+'">').text("Läs hela artikeln").appendTo($('#guardian-' + i));   
         }
     }
 }
