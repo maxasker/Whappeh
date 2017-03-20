@@ -48,23 +48,22 @@
 
 }
 
-    .single-article > article > button {
-        margin-bottom: 3%;
+    .single-article > a {
         margin-top: 2%;
         background-color: #333;
-        padding-left: 3%;
-        padding-right: 3%;
         border-radius: 5px;
-}
-
-    .single-article > article > button:hover {
-        background-color: white;
-}
-
-    .single-article > article > button > a {
         color: #9d9d9d;
-        
+        display: block;
+        height: 25px;
+        font-size: 18px;
 }
+
+    .single-article > a:hover {
+        background-color: #303;
+        color: #f0f0f0;
+}
+
+
 
 
     .single-article > article > img{
