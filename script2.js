@@ -36,14 +36,17 @@ function start(){
 }
 
 function sverigesradio(searchterm){
+$('<div class="spinner spinnersr"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>').appendTo($('#srtothits'));
 $.ajax({
     url: "http://api.sr.se/api/v2/episodes/search/?query="+searchterm+"&format=json",
     dataType: "JSON"
 }).done(function(data){
     console.log(data);
+    $( ".spinnersr" ).remove();
     gethitsSR(data);
     updatesr(data);
 }).fail(function(data){
+    $( ".spinnersr" ).remove();
     console.log("something went wrong");
 });
 }
@@ -54,18 +57,18 @@ function nytimes(searchterm){
     'api-key': "8731a51f622143dd834372cdff348d28",
     'q': searchterm
 });
-$('<div class="spinner">HEJ<div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>').appendTo($('#nytimestothits'));
+$('<div class="spinner spinnernyt"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>').appendTo($('#nytimestothits'));
 
 $.ajax({
     url: url,
     dataType: "JSON"
 }).done(function(data){
     console.log(data);
-    $( ".spinner" ).remove();
+    $( ".spinnernyt" ).remove();
     updatenytimes(data);
     gethitsNYTIMES(data);
 }).fail(function(data){
-    $( ".spinner" ).remove();
+    $( ".spinnernyt" ).remove();
     console.log("something went wrong");
 });
     
@@ -140,14 +143,17 @@ function updatesr(data){
 }
 
 function guardian(searchterm){
+    $('<div class="spinner spinnerguard"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>').appendTo($('#guardiantothits'));
     $.ajax({
     url: "https://content.guardianapis.com/search?q="+searchterm+"&show-fields=all&api-key=f6a07e0d-f72f-47f9-ae61-a0d0446cef14",
     dataType: "JSONP"
 }).done(function(data){
     console.log(data);
+    $( ".spinnerguard" ).remove();
     updateguardian(data);
     gethitsGUARDIAN(data);
 }).fail(function(data){
+    $( ".spinnerguard" ).remove();
     console.log("something went wrong");
 });
 
