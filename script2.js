@@ -39,7 +39,8 @@ function sverigesradio(searchterm){
 $('<div class="spinner spinnersr"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>').appendTo($('#srtothits'));
 $.ajax({
     url: "http://api.sr.se/api/v2/episodes/search/?query="+searchterm+"&format=json",
-    dataType: "JSON"
+    dataType: "JSON",
+    timeout:5000
 }).done(function(data){
     console.log(data);
     $( ".spinnersr" ).remove();
@@ -47,7 +48,7 @@ $.ajax({
     updatesr(data);
 }).fail(function(data){
     $( ".spinnersr" ).remove();
-    console.log("something went wrong");
+    $('<p class="totalhitsp">').text("Error when connecting to SR").appendTo($('#srtothits'));
 });
 }
 
@@ -61,7 +62,8 @@ $('<div class="spinner spinnernyt"><div class="rect1"></div><div class="rect2"><
 
 $.ajax({
     url: url,
-    dataType: "JSON"
+    dataType: "JSON",
+    timeout:5000
 }).done(function(data){
     console.log(data);
     $( ".spinnernyt" ).remove();
@@ -69,7 +71,7 @@ $.ajax({
     gethitsNYTIMES(data);
 }).fail(function(data){
     $( ".spinnernyt" ).remove();
-    console.log("something went wrong");
+    $('<p class="totalhitsp">').text("Error when connecting to NY-times").appendTo($('#nytimestothits'));
 });
     
 }
@@ -146,7 +148,8 @@ function guardian(searchterm){
     $('<div class="spinner spinnerguard"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>').appendTo($('#guardiantothits'));
     $.ajax({
     url: "https://content.guardianapis.com/search?q="+searchterm+"&show-fields=all&api-key=f6a07e0d-f72f-47f9-ae61-a0d0446cef14",
-    dataType: "JSONP"
+    dataType: "JSONP",
+    timeout:5000
 }).done(function(data){
     console.log(data);
     $( ".spinnerguard" ).remove();
@@ -154,7 +157,7 @@ function guardian(searchterm){
     gethitsGUARDIAN(data);
 }).fail(function(data){
     $( ".spinnerguard" ).remove();
-    console.log("something went wrong");
+    $('<p class="totalhitsp">').text("Error when connecting to The Guardian").appendTo($('#guardiantothits'));
 });
 
 }
