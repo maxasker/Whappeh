@@ -70,16 +70,20 @@ html, body{
 
 
     .loader {
-        border: 16px solid #f3f3f3; /* Light grey */
+        border: 30px solid #f3f3f3; /* Light grey */
         border-top: 16px solid blue;
         border-right: 16px solid green;
+        border-left: 16px solid grey;
         border-bottom: 16px solid red;
         border-radius: 50%;
-        width: 120px;
-        height: 120px;
+        width: 6em;
+        height: 6em;
         animation: spin 2s linear infinite;
-        margin-left: 40%;
+        margin-left: 45%;
+        margin-right: 45%;
         margin-top: 20%;
+        margin-bottom: 20%;
+
 }
 
 @keyframes spin {
@@ -94,7 +98,6 @@ html, body{
     .chart-div-right{
         background-color: white;
         width: 97%;
-        height: 450px;
         margin-left: 1%;
         margin-right: 2%;
         margin-top: 5%;
@@ -104,7 +107,6 @@ html, body{
     .chart-div-left{
         background-color: white;
         width: 97%; 
-        height: 450px;
         margin-left: 2%;
         margin-right: 1%;
         margin-top: 5%;
