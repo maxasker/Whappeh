@@ -284,7 +284,15 @@ function makegraph(myvalues){
         }]
     },
     options: {
-        responsive : true
+        responsive : true,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+        
             }
         }
         myBar = new Chart(ctx, barData);

@@ -56,13 +56,13 @@ function start() {
             makegraph(grapharray, "chart4", 3);
             stop();
         }
-        if (times == 5) {
+        if (times == 10) {
             clearInterval(printInterval);
         }
         console.log("It has been run ", times, " times");
     }
 
-    printInterval = setInterval(print, 2000);
+    printInterval = setInterval(print, 1500);
 }
 
 function stop() {
@@ -123,7 +123,14 @@ function makegraph(myvalues, chartnumber,numberz){
         }]
     },
     options: {
-        responsive : true
+        responsive : true,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
             }
         }
         myBar = new Chart(ctx, barData);
