@@ -261,7 +261,6 @@ function gethitsGUARDIAN(data){
 function makegraph(myvalues){
     $('<canvas id="myChart"></canvas>').appendTo($('#charts'));
     var hits = $("#myChart");
-    console.log(hits);
     var ctx = hits[0].getContext("2d");
     var barData = {
     animation: true,
