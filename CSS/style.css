@@ -4,7 +4,7 @@ html, body{
 }
 
 .wrapper{
-        height: 95%;
+        min-height: 95%;
 }
 #searchlink{
     
@@ -193,10 +193,6 @@ html, body{
     .row.content {
         height: 450px
 }
-
-
-
- 
     
     footer {
         clear: both;
@@ -215,8 +211,8 @@ html, body{
         height:auto;
 } 
     .links-div{
-        width: 100%;
-        margin-left: 2.5%;
+        width: 96%;
+        margin-left: 2%;
         margin-top: 2%;
         margin-bottom: 2%;
         overflow: hidden;
