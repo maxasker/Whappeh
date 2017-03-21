@@ -8,6 +8,10 @@ urlarray.sr = ["http://api.sr.se/api/v2/episodes/search/?query=trump&format=json
 urlarray.gn = ["https://content.guardianapis.com/search?q=trump&show-fields=all&api-key=f6a07e0d-f72f-47f9-ae61-a0d0446cef14","https://content.guardianapis.com/search?q=zlatan&show-fields=all&api-key=f6a07e0d-f72f-47f9-ae61-a0d0446cef14","https://content.guardianapis.com/search?q=information+architecture&show-fields=all&api-key=f6a07e0d-f72f-47f9-ae61-a0d0446cef14","https://content.guardianapis.com/search?q=malmö&show-fields=all&api-key=f6a07e0d-f72f-47f9-ae61-a0d0446cef14"];
 urlarray.nt = ["https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=8731a51f622143dd834372cdff348d28&q=trump","https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=8731a51f622143dd834372cdff348d28&q=zlatan","https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=8731a51f622143dd834372cdff348d28&q=information+architecture","https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=8731a51f622143dd834372cdff348d28&q=malmö"];
 
+$('<div class="loader col-sm-6 text-middle" id="chart-0"></div>').appendTo($('#chart1'));
+$('<div class="loader col-sm-6 text-middle" id="chart-1"></div>').appendTo($('#chart2'));
+$('<div class="loader col-sm-6 text-middle" id="chart-2"></div>').appendTo($('#chart3'));
+$('<div class="loader col-sm-6 text-middle" id="chart-3"></div>').appendTo($('#chart4'));
 
 var printInterval;
 var times = 0;
@@ -92,7 +96,7 @@ function genericpopfunction(data, newstype){
 }
 
 function makegraph(myvalues, chartnumber,numberz){
-    console.log("Chart " + numberz + " has been created!");
+    $( "#chart-" + numberz ).remove();
     $('<canvas class="myChart" id="chart-'+numberz+'"></canvas>').appendTo($('#'+chartnumber));
     var hits = $('#chart-'+numberz);
     var ctx = hits[0].getContext("2d");
