@@ -1,6 +1,5 @@
 var myvalues = new Array();
 $("#search").on("click", function(){
-    myvalues = [];
     start();
 });
 
@@ -13,8 +12,11 @@ $("#search").on("click", function(){
  
 
 function start(){
+    myvalues = [];
     if( $("#searchterm").val().length === 0 ) {
       $(".article-h").addClass("hidden");
+      $( ".chartjs-hidden-iframe" ).remove();
+      $( "#myChart" ).remove();
       $( ".single-article" ).remove();
       $( ".show-button" ).remove();
       $( ".totalhitsp" ).remove();
@@ -22,6 +24,8 @@ function start(){
     $("#searchterm").fadeTo('slow', 0.5).fadeTo('slow', 1.0);
     $("#searchterm").attr("placeholder", "You need to search for something!");
     }} else {
+    $( ".chartjs-hidden-iframe" ).remove();
+    $( "#myChart" ).remove();
     $(".article-h").removeClass("hidden");
     $("#searchterm").attr("placeholder", "Search for...");
     myvalues = [];
@@ -255,7 +259,9 @@ function gethitsGUARDIAN(data){
 }
 
 function makegraph(myvalues){
+    $('<canvas id="myChart"></canvas>').appendTo($('#charts'));
     var hits = $("#myChart");
+    console.log(hits);
     var ctx = hits[0].getContext("2d");
     var barData = {
     animation: true,
