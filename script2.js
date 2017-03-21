@@ -1,5 +1,6 @@
 var myvalues = new Array();
 $("#search").on("click", function(){
+    myvalues = [];
     start();
 });
 
@@ -31,7 +32,6 @@ function start(){
     sverigesradio(searchterm);
 	guardian(searchterm);
     nytimes(searchterm);
-    makegraph(myvalues);
     }
 }
 
@@ -240,6 +240,7 @@ function gethitsNYTIMES(data){
     $.each(data.response[i], function (key, val) {
         if(key == "hits"){
             myvalues.push(val)
+            makegraph(myvalues)
         }
         });
     });
@@ -254,11 +255,13 @@ function gethitsGUARDIAN(data){
 }
 
 function makegraph(myvalues){
-var ctx = $("#myChart");
-var myChart = new Chart(ctx, {
+    var hits = $("#myChart");
+    var ctx = hits[0].getContext("2d");
+    var barData = {
+    animation: true,
     type: 'bar',
     data: {
-        labels: ["SR", "Guardian", "NY Times"],
+        labels: ["Sveriges Radio", "Guardian", "New York Times"],
         datasets: [{
             label: 'Total hits!',
             data: myvalues,
@@ -276,13 +279,13 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
+        responsive : true
+            }
         }
+    var chartframe = $(".chartjs-hidden-iframe")
+    if (chartframe == null){
+        myBar = new Chart(ctx, barData);
+    }else if (chartframe != null)
+        $(".chartjs-hidden-iframe").remove();
+        myBar = new Chart(ctx, barData);
     }
-});
-}
