@@ -94,28 +94,22 @@ html, body{
     .chart-div-right{
         background-color: white;
         width: 97%;
-        height: 400px;
+        height: 450px;
         margin-left: 1%;
         margin-right: 2%;
-        margin-top: 2%;
+        margin-top: 5%;
         margin-bottom: 3%;
-        border-radius: 5px;
-        -webkit-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
-        -moz-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
-        box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+
 }
     .chart-div-left{
         background-color: white;
         width: 97%; 
-        height: 400px;
+        height: 450px;
         margin-left: 2%;
         margin-right: 1%;
-        margin-top: 2%;
+        margin-top: 5%;
         margin-bottom: 3%;
-        border-radius: 5px;
-        -webkit-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
-        -moz-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
-        box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
+
 }
     .links-div{
         width: 30%;
