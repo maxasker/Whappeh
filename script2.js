@@ -63,7 +63,7 @@ function nytimes(searchterm){
     'q': searchterm
 });
 $('<div class="spinner spinnernyt"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>').appendTo($('#nytimestothits'));
-
+console.log(url);
 $.ajax({
     url: url,
     dataType: "JSON",
@@ -287,10 +287,5 @@ function makegraph(myvalues){
         responsive : true
             }
         }
-    var chartframe = $(".chartjs-hidden-iframe")
-    if (chartframe == null){
-        myBar = new Chart(ctx, barData);
-    }else if (chartframe != null)
-        $(".chartjs-hidden-iframe").remove();
         myBar = new Chart(ctx, barData);
     }

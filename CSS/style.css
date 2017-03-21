@@ -72,7 +72,7 @@ html, body{
     margin-top: 8px;
 }
  
-    #chart-div-right{
+    .chart-div-right{
         background-color: white;
         width: 97%;
         height: 400px;
@@ -86,7 +86,7 @@ html, body{
         -moz-box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
         box-shadow: 10px 6px 15px -4px rgba(0,0,0,0.42);
 }
-    #chart-div-left{
+    .chart-div-left{
         background-color: white;
         width: 97%; 
         height: 400px;
