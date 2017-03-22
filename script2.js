@@ -46,7 +46,6 @@ $.ajax({
     dataType: "JSON",
     timeout:5000
 }).done(function(data){
-    console.log(data);
     $( ".spinnersr" ).remove();
     gethitsSR(data);
     updatesr(data);
@@ -63,13 +62,11 @@ function nytimes(searchterm){
     'q': searchterm
 });
 $('<div class="spinner spinnernyt"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>').appendTo($('#nytimestothits'));
-console.log(url);
 $.ajax({
     url: url,
     dataType: "JSON",
     timeout:5000
 }).done(function(data){
-    console.log(data);
     $( ".spinnernyt" ).remove();
     updatenytimes(data);
     gethitsNYTIMES(data);
@@ -155,7 +152,6 @@ function guardian(searchterm){
     dataType: "JSONP",
     timeout:5000
 }).done(function(data){
-    console.log(data);
     $( ".spinnerguard" ).remove();
     updateguardian(data);
     gethitsGUARDIAN(data);

@@ -47,8 +47,8 @@ function start() {
             grapharray.push(hitsArray["gn"][2]);
             grapharray.push(hitsArray["sr"][2]);
             makegraph(grapharray, "chart3", 2);
-        } else if ((hitsArray["sr"].length == 4) && (hitsArray["gn"].length == 4) && (hitsArray["nt"].length == 4)){
-            console.log("HEEEEEEEEEJ");
+        } else if ((hitsArray["sr"].length == 4) && (hitsArray["gn"].length == 4) && (hitsArray["nt"].length == 4) && (timesarray==0){
+            timesarray += 1;
             var grapharray = [];
             grapharray.push(hitsArray["nt"][3]);
             grapharray.push(hitsArray["gn"][3]);
@@ -59,7 +59,6 @@ function start() {
         if (times == 10) {
             clearInterval(printInterval);
         }
-        console.log("It has been run ", times, " times");
     }
 
     printInterval = setInterval(print, 1500);
@@ -75,16 +74,14 @@ $.ajax({
     dataType: jsontype,
     timeout:5000
 }).done(function(data){
-    console.log(data);
     genericpopfunction(data, newstype);
 }).fail(function(data){
-    console.log("fakka yu");
+    console.log("failed");
 });
     
 }
 
 function genericpopfunction(data, newstype){
-    console.log(newstype);
     if (newstype == "gn"){
         hitsArray.gn.push(data["response"]["total"])
     }else if (newstype == "nt"){
@@ -92,7 +89,6 @@ function genericpopfunction(data, newstype){
     }else if (newstype == "sr"){
         hitsArray.nt.push(data["pagination"]["totalhits"])
 }
-    console.log(hitsArray);
 }
 
 function makegraph(myvalues, chartnumber,numberz){
@@ -100,7 +96,6 @@ function makegraph(myvalues, chartnumber,numberz){
     $('<canvas class="myChart" id="chart-'+numberz+'"></canvas>').appendTo($('#'+chartnumber));
     var hits = $('#chart-'+numberz);
     var ctx = hits[0].getContext("2d");
-    console.log(hits);
     var barData = {
     animation: true,
     type: 'bar',
