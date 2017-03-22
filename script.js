@@ -47,7 +47,7 @@ function start() {
             grapharray.push(hitsArray["gn"][2]);
             grapharray.push(hitsArray["sr"][2]);
             makegraph(grapharray, "chart3", 2);
-        } else if ((hitsArray["sr"].length == 4) && (hitsArray["gn"].length == 4) && (hitsArray["nt"].length == 4) && (timesarray==0){
+        } else if ((hitsArray["sr"].length == 4) && (hitsArray["gn"].length == 4) && (hitsArray["nt"].length == 4) && (timesarray==0)){
             timesarray += 1;
             var grapharray = [];
             grapharray.push(hitsArray["nt"][3]);
